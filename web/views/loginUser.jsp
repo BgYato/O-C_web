@@ -59,6 +59,11 @@
                             <p>La operación se ha realizado con éxito.</p>
                         </div>
                     </c:if> 
+                    <c:if test="${mensaje eq 'sin-sesion'}">
+                        <div class="m-4 alert alert-danger">
+                            <p>No has iniciado sesión.</p>
+                        </div>
+                    </c:if> 
                   </form>
                 </div>
               </div>                

@@ -5,7 +5,9 @@
  */
 package controlador;
 
+import DAO.RespuestaDAO;
 import DAO.TemaDAO;
+import VO.RespuestaVO;
 import VO.TemaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,8 +59,11 @@ public class TemaController extends HttpServlet {
                 break;
             case "tema":                
                 temaDAO = new TemaDAO();
-                TemaVO detalleTema = temaDAO.findTelaById(request.getParameter("idTema"));                
+                RespuestaDAO respuestasDAO = new RespuestaDAO();
+                TemaVO detalleTema = temaDAO.findTelaById(request.getParameter("idTema"));
+                List<RespuestaVO> respuestas = respuestasDAO.obtenerRespuestasPorTema(request.getParameter("idTema"));
                 request.setAttribute("tema", detalleTema);
+                request.setAttribute("respuestas", respuestas);
                 request.setAttribute("idCiudadano", request.getParameter("idCiudadano"));
                 request.getRequestDispatcher("views/detailsTema.jsp").forward(request, response);
                 break;

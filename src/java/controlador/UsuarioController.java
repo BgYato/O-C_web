@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -101,16 +102,23 @@ public class UsuarioController extends HttpServlet {
                 System.out.println("controlador.UsuarioController.doPost() - Correo: "+correo_i);
                 if (usuarioDAO.existUserEmail(correo_i)) {
                     if (usuarioDAO.iniciarSesion(correo_i, pass_i)) {
-                        String id = usuarioDAO.findIdByEmail(correo_i);                        
-                        if (usuarioDAO.isAdmin(id)) {                            
+                        String id = usuarioDAO.findIdByEmail(correo_i); 
+                        HttpSession sesion = request.getSession(true);
+                        if (usuarioDAO.isAdmin(id)) {
+                            sesion.setAttribute("rol", 0);
                             usuarioVO = usuarioDAO.obtenerUsuarioPorId(id);
                             AdministradorDAO administradorDAO = new AdministradorDAO();
                             AdministradorVO administradorVO = administradorDAO.obtenerAdministradorPorIdUsuario(id);
                             request.setAttribute("usuario", usuarioVO);
                             request.setAttribute("administrador", administradorVO);
                             request.getRequestDispatcher("views/accountAdmin.jsp").forward(request, response);
-                        } else if (usuarioDAO.isCiudadano(id)) {
-                            inicioExistoso(request, response, id);         
+                        } else if (usuarioDAO.isCiudadano(id)) {                               
+                            CiudadanoDAO ciudadanoDAO = new CiudadanoDAO();                            
+                            CiudadanoVO ciudadanoVO = ciudadanoDAO.obtenerCiudadanoPorIdUsuario(id);
+                            
+                            sesion.setAttribute("rol", 1);
+                            sesion.setAttribute("sCiudadano", ciudadanoVO);
+                            inicioExistoso(request, response, id);
                         }
                     } else {
                         request.setAttribute("mensaje", "incorrecto");
@@ -142,7 +150,7 @@ public class UsuarioController extends HttpServlet {
         CiudadanoVO ciudadanoVO = ciudadanoDAO.obtenerCiudadanoPorIdUsuario(id);
         TemaDAO temaDAO = new TemaDAO();
         List<TemaVO> listaTemas = temaDAO.obtenerTodosLosRegistros();
-        
+                
         request.setAttribute("listaTemas", listaTemas);                
         request.setAttribute("usuario", usuarioVO);
         request.setAttribute("ciudadano", ciudadanoVO);

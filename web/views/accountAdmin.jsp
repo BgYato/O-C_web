@@ -3,7 +3,7 @@
     Created on : 15/09/2023, 01:41:49 PM
     Author     : TOSHIBA
 --%>
-
+<%@include  file="sessions/sessionAdmin.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

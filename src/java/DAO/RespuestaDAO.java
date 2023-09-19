@@ -9,6 +9,8 @@ import VO.RespuestaVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import util.Conexion;
 import util.Crud;
 
@@ -77,6 +79,31 @@ public class RespuestaDAO extends Conexion implements Crud{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
+    public List<RespuestaVO> obtenerRespuestasPorTema(String idTema) {
+        List<RespuestaVO> listaRespuesta = new ArrayList<>();
+        sql = "SELECT * FROM respuestas WHERE idTema = ?";
+
+        try {
+            conexion = obtenerConexion();            
+
+            preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, idTema);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                RespuestaVO respuesta = new RespuestaVO();
+                respuesta.setIdRespuesta(resultSet.getString("idRespuesta"));
+                respuesta.setIdCiudadano(resultSet.getString("idCiudadano"));
+                respuesta.setRespuesta(resultSet.getString("respuesta"));
+                respuesta.setIdTema(resultSet.getString("idTema"));
+
+                listaRespuesta.add(respuesta);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener todos los registros: " + e.getMessage());
+        }
+        
+        return listaRespuesta;
+    }
         
 }
