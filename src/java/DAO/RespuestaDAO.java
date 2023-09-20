@@ -56,6 +56,23 @@ public class RespuestaDAO extends Conexion implements Crud{
         }
         return operacion;
     }
+    
+    public String idRespuestaByOthersId(String idCiudadano, String idTema){
+        String id = "";
+        sql = "select idRespuesta from respuestas where idCiudadano = ? and idTema = ?";
+        try {
+            preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, idCiudadano);
+            preparedStatement.setString(2, idTema);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getString("idRespuesta");
+            }
+        } catch (Exception e) {
+            System.out.println("DAO.RespuestaDAO.existCommentBefore() - Error: "+e.getMessage());
+        }
+        return id;
+    }
 
     @Override
     public boolean crearRegistro() {

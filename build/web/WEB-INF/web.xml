@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>Respuestas</servlet-name>
-        <servlet-class>controlador.Respuestas</servlet-class>
+        <servlet-class>controlador.RespuestasController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioController</servlet-name>

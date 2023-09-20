@@ -12,12 +12,12 @@ CREATE TABLE ciudadano(
 idCiudadano INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 estrato INT(11) NOT NULL , 
 tipoDoc VARCHAR(100) NOT NULL , 
-doc INT(11) NOT NULL , 
+doc INT(15) NOT NULL , 
 nombres VARCHAR(100) NOT NULL , 
 apellidos VARCHAR(100) NOT NULL , 
 sexo VARCHAR(50) NOT NULL , 
-celular INT(13) NOT NULL , 
-fijo INT(13) NOT NULL , 
+celular INT(15) NOT NULL , 
+fijo INT(15) NOT NULL , 
 municipio VARCHAR(150) NOT NULL , 
 direccion VARCHAR(150) NOT NULL , 
 barrio VARCHAR(150) NOT NULL , 
@@ -54,7 +54,7 @@ idUsuario int(11) not null
 
 create table certificado(
 identificador INT(6) ZEROFILL AUTO_INCREMENT primary key, 
-fechaCert date not null,
+fechaCert TIMESTAMP DEFAULT CURRENT_TIMESTAMP not null,
 idTema int(11) not null,
 idRespuesta int(11) not null,
 idCiudadano int(11) not null
