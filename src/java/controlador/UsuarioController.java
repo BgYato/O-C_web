@@ -79,7 +79,7 @@ public class UsuarioController extends HttpServlet {
         } else {
             HttpSession sessionActiva = (HttpSession) request.getSession(false);
             if (sessionActiva != null) {
-                sessionActiva.invalidate();
+                System.out.println("controlador.UsuarioController.doGet() - Sesión activa");
                 response.sendRedirect("usuario?navegacion=login");
             } else {
                 response.sendRedirect("usuario?navegacion=login");

@@ -53,10 +53,6 @@ and certificado.idCiudadano = $P!{cIdCiudadano};]]>
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
-			<image scaleImage="RealHeight" isLazy="true">
-				<reportElement x="96" y="10" width="103" height="111" uuid="cac521ba-d245-4796-aaef-4e0abfc2c7e1"/>
-				<imageExpression><![CDATA["C:\\Users\\TOSHIBA\\Documents\\sondeos\\web\\public\\images\\pdf-logo.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="212" y="33" width="301" height="66" uuid="00d0d2c8-60e8-49ac-bb9d-05388a19212c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -64,6 +60,10 @@ and certificado.idCiudadano = $P!{cIdCiudadano};]]>
 				</textElement>
 				<text><![CDATA[CERTIFICADO DE PARTICIPACIÓN.]]></text>
 			</staticText>
+			<image>
+				<reportElement x="88" y="23" width="158" height="87" uuid="70d278ff-9f3d-4fc5-9dea-1c3a3efb649a"/>
+				<imageExpression><![CDATA["C:\\Users\\SenaSOFT09\\Desktop\\sondeos\\web\\public\\images\\pdf-logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

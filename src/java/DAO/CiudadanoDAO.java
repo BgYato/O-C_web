@@ -127,6 +127,45 @@ public class CiudadanoDAO extends Conexion implements Crud{
         
         return ciudadano;
     }
+    
+    public CiudadanoVO obtenerCiudadanoPorId(String id) {
+        CiudadanoVO ciudadano = null;
+        sql = "SELECT * FROM ciudadano WHERE idCiudadano = ?";
+        
+        try {
+            conexion = obtenerConexion();
+            preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                // Encontramos un usuario, creamos un objeto Usuario
+                ciudadano = new CiudadanoVO();
+                ciudadano.setIdCiudadano(resultSet.getString("idCiudadano"));
+                ciudadano.setEstrato(resultSet.getString("estrato"));
+                ciudadano.setTipoDoc(resultSet.getString("tipoDoc"));
+                ciudadano.setDoc(resultSet.getString("doc"));
+                ciudadano.setNombres(resultSet.getString("nombres"));
+                ciudadano.setApellidos(resultSet.getString("apellidos"));
+                ciudadano.setSexo(resultSet.getString("sexo"));
+                ciudadano.setCelular(resultSet.getString("celular"));
+                ciudadano.setFijo(resultSet.getString("fijo"));
+                ciudadano.setMunicipio(resultSet.getString("municipio"));
+                ciudadano.setDireccion(resultSet.getString("direccion"));
+                ciudadano.setBarrio(resultSet.getString("barrio"));
+                ciudadano.setFechaNac(resultSet.getString("fechaNac"));
+                ciudadano.setEtnia(resultSet.getString("etnia"));
+                ciudadano.setCondicion(resultSet.getString("condicion"));
+                ciudadano.setIdUsuario(resultSet.getString("idUsuario"));
+            }                        
+            
+        } catch (Exception e) {
+            System.out.println("Error al obtener ciudadano por ID en CiudadanoDAO, error: " + e.getMessage());
+        }
+        
+        return ciudadano;
+    }
 
     @Override
     public boolean editarRegistro() {

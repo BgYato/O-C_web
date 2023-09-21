@@ -48,6 +48,9 @@
                     <div class="m-4 alert alert-danger">
                         <p>El correo ${correo} no existe.</p>
                     </div>
+                    <script>
+                        alert('No existe');
+                    </script>
                     </c:if> 
                     <c:if test="${mensaje eq 'incorrecto'}">
                         <div class="m-4 alert alert-danger">
