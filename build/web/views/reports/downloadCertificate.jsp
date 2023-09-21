@@ -19,8 +19,13 @@
     </head>
     <body>
         <% 
-       File reporte = new File(application.getRealPath("ListaVehiculos.jasper"));
+       File reporte = new File(application.getRealPath("views/reports/pdf/miReporte.jasper"));
        Map<String,Object> parametros = new HashMap<String, Object>();
+       
+       String cIdCertificado = request.getParameter("idCertificado");
+       String cIdCiudadano = request.getParameter("idCiudadano");
+       parametros.put("cIdCertificado", cIdCertificado);
+       parametros.put("cIdCiudadano", cIdCiudadano);
        
        Conexion conexion = new Conexion();
        Connection objetoConexion = conexion.obtenerConexion();

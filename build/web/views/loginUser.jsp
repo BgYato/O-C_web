@@ -64,6 +64,11 @@
                             <p>No has iniciado sesión.</p>
                         </div>
                     </c:if> 
+                    <c:if test="${mensaje eq 'sin-permisos'}">
+                        <div class="m-4 alert alert-danger">
+                            <p>No tienes permisos para acceder al recurso.</p>
+                        </div>
+                    </c:if> 
                   </form>
                 </div>
               </div>                

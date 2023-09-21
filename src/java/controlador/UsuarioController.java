@@ -6,10 +6,12 @@
 package controlador;
 
 import DAO.AdministradorDAO;
+import DAO.CertificadoDAO;
 import DAO.CiudadanoDAO;
 import DAO.TemaDAO;
 import DAO.UsuarioDAO;
 import VO.AdministradorVO;
+import VO.CertificadoVO;
 import VO.CiudadanoVO;
 import VO.TemaVO;
 import VO.UsuarioVO;
@@ -58,8 +60,8 @@ public class UsuarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String navegacion = request.getParameter("navegacion");
-                
-        switch(navegacion){
+        if (navegacion!=null) {
+            switch(navegacion){
             case "register":
                 request.getRequestDispatcher("views/registerUser.jsp").forward(request, response);
                 break;
@@ -73,7 +75,16 @@ public class UsuarioController extends HttpServlet {
                 request.setAttribute("usuario", usuarioVO);
                 request.getRequestDispatcher("views/editUser.jsp").forward(request, response);
                 break;
-        }
+            }
+        } else {
+            HttpSession sessionActiva = (HttpSession) request.getSession(false);
+            if (sessionActiva != null) {
+                sessionActiva.invalidate();
+                response.sendRedirect("usuario?navegacion=login");
+            } else {
+                response.sendRedirect("usuario?navegacion=login");
+            }
+        }             
         
     }
 
@@ -150,8 +161,11 @@ public class UsuarioController extends HttpServlet {
         CiudadanoVO ciudadanoVO = ciudadanoDAO.obtenerCiudadanoPorIdUsuario(id);
         TemaDAO temaDAO = new TemaDAO();
         List<TemaVO> listaTemas = temaDAO.obtenerTodosLosRegistros();
+        CertificadoDAO certificadoDAO = new CertificadoDAO();
+        List<CertificadoVO> listaCertificados = certificadoDAO.obtenerCertificadosPorIdCiudadano(ciudadanoVO.getIdCiudadano());
                 
-        request.setAttribute("listaTemas", listaTemas);                
+        request.setAttribute("listaTemas", listaTemas);
+        request.setAttribute("listaCertificados", listaCertificados);
         request.setAttribute("usuario", usuarioVO);
         request.setAttribute("ciudadano", ciudadanoVO);
         request.getRequestDispatcher("views/accountUser.jsp").forward(request, response);

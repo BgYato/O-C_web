@@ -12,12 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/controlador/ReporteController.java</file>
             <file>file:/C:/Users/TOSHIBA/Documents/sondeos/web/views/detailsTema.jsp</file>
-            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/DAO/TemaDAO.java</file>
-            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/controlador/TemaController.java</file>
-            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/DAO/RespuestaDAO.java</file>
-            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/controlador/Respuestas.java</file>
-            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/web/views/listarTemas.jsp</file>
+            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/controlador/UsuarioController.java</file>
+            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/src/java/controlador/RespuestasController.java</file>
+            <file>file:/C:/Users/TOSHIBA/Documents/sondeos/web/views/reports/downloadCertificate.jsp</file>
         </group>
     </open-files>
 </project-private>

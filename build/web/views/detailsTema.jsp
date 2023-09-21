@@ -7,6 +7,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
     </head>
     <body>
         <%
@@ -14,9 +24,10 @@
             String mensajeRecibido = request.getParameter("mensaje");
             mensajeRecibido = (mensajeRecibido != null && !mensajeRecibido.isEmpty()) ? mensajeRecibido : "";            
         %> 
-        <section>
+        <section class="mx-auto mt-4" style="max-width: 42rem;">
           <div class="card" style="max-width: 42rem">
             <div class="card-body">
+                <p class="small"><a href="usuario">Volver</a></p>
               <!-- Data -->
               <div class="d-flex mb-3">
                 <a href="">

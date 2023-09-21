@@ -16,8 +16,8 @@ doc INT(15) NOT NULL ,
 nombres VARCHAR(100) NOT NULL , 
 apellidos VARCHAR(100) NOT NULL , 
 sexo VARCHAR(50) NOT NULL , 
-celular INT(15) NOT NULL , 
-fijo INT(15) NOT NULL , 
+celular BIGINT(15) NOT NULL , 
+fijo BIGINT(15) NOT NULL , 
 municipio VARCHAR(150) NOT NULL , 
 direccion VARCHAR(150) NOT NULL , 
 barrio VARCHAR(150) NOT NULL , 
@@ -119,3 +119,8 @@ references respuestas(idRespuesta);
 alter table sondeos
 add constraint SonTemFK foreign key (idTema)
 references tema(idTema);
+
+insert into usuarios(correo, contrasenna) values("admin@mail.com", "1234");
+insert into administrador(nombre, apellido, idUsuario) values("Administrador", "Uno", 1);
+insert into usuarios(correo, contrasenna) values("andres@mail.com", "1234");
+INSERT INTO `ciudadano` (`idCiudadano`, `estrato`, `tipoDoc`, `doc`, `nombres`, `apellidos`, `sexo`, `celular`, `fijo`, `municipio`, `direccion`, `barrio`, `fechaNac`, `etnia`, `condicion`, `idUsuario`) VALUES (NULL, '3', 'CC', '1014478353', 'Andres Felipe', 'Yate Munoz', 'hombre', '3222379887', '3222379887', 'Cundinamarca', 'Calle 71 sur No.18a', 'San Manuel', '2005-04-16', 'Ninguna', 'ninguna', '2')

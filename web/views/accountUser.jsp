@@ -23,7 +23,7 @@
                 <div class="col">
                   <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                      <li class="breadcrumb-item"><a href="/sondeos">Inicio</a></li>
+                      <li class="breadcrumb-item"><a href="/sondeos/">Inicio</a></li>
                       <li class="breadcrumb-item"><a href="#">User</a></li>
                       <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                     </ol>
@@ -121,33 +121,28 @@
                     <div class="col-md-6">
                       <div class="card mb-4 mb-md-0">
                         <div class="card-body">
-                          <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                          </p>
-                          <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                          <div class="progress rounded" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                          <div class="progress rounded" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                          <div class="progress rounded" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                          <div class="progress rounded" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                          <div class="progress rounded mb-2" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
+                          <h4 class="text-center mt-4">Tus certificados</h4>
+                            <div class="list-group m-4">
+                                <c:forEach var="certificado" items="${listaCertificados}">
+                                    <div class="mt-4">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        Certificado No.${certificado.identificador}                                       
+                                        <a 
+                                            href="reporte?tipo=certificado&accion=download&idCertificado=${certificado.identificador}&idCiudadano=${sCiudadano.idCiudadano}" 
+                                            class="btn btn-primary btn-sm float-end w-100 mt-2"
+                                            target="_blank">
+                                            Descargar PDF
+                                        </a>                                    
+                                        <a 
+                                            href="reporte?tipo=certificado&accion=show&idCertificado=${certificado.identificador}&idCiudadano=${sCiudadano.idCiudadano}" 
+                                            class="btn btn-success btn-sm float-end w-100 mt-2"
+                                            target="_blank">
+                                            Ver PDF
+                                        </a>
+                                    </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </div>
                       </div>
                     </div>
